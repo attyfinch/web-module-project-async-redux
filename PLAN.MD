@@ -1,7 +1,7 @@
 // Jokes
 Practice actual work and not boil the ocean with a simple joke getter, punchline revealer.
 
-
+https://official-joke-api.appspot.com/jokes/random
 
 
 // AI Grader

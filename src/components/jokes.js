@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
+import { getJoke, wasFunny } from "../actions";
 
 
 const Jokes = (props) => {
@@ -7,12 +8,18 @@ const Jokes = (props) => {
 
     return (
         <>
-            <h2>Setup</h2>
+            <h3>Setup</h3>
             <div>{props.setup}</div>
-            <h2>Punchline</h2>
+            <h3>Punchline</h3>
             <div>{props.punchline}</div>
             <br></br>
-            <button>Get a New Joke</button>
+            <button onClick={() => props.getJoke()}>Get a New Joke</button>
+            <div><br></br></div>
+            <div>
+                <button onClick={() => props.wasFunny()}>That was funny</button>
+                <h2>{props.funny} jokes out of {props.jokeCount} have been funny</h2>
+            </div>
+            
         </>
     )
        
@@ -21,10 +28,12 @@ const Jokes = (props) => {
 const mapStateToProps = state => {
     return {
         setup: state.setup,
-        punchline: state.punchline
+        punchline: state.punchline,
+        funny: state.funny,
+        jokeCount: state.jokeCount
     };
 };
 
 
-export default connect(mapStateToProps, {})(Jokes);
+export default connect(mapStateToProps, { getJoke, wasFunny })(Jokes);
 
